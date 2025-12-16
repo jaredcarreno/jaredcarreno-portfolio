@@ -1,0 +1,3 @@
+---
+title: "Stabilizing an Inverted Pendulum in MATLAB"
+---

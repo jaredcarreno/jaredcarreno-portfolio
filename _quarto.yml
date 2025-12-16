@@ -7,7 +7,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - text: Embedded Systems (FPGAs & MCUs)
+      - text: Microprocessor Based Systems
         menu: 
           - href: labs/lab1/lab1.qmd
             text: Addition with a 7-Segment Display
@@ -21,6 +21,26 @@ website:
             text: High-Precision Motor Velocity Tracking Using Interrupts
           - href: labs/lab6/lab6.qmd
             text: SPI-Based IoT Temperature Monitor
+
+      - text: DSP
+        menu: 
+          - href: dsp/realtimetsm/realtimetsm.qmd
+            text: Real-Time Harmonic-Percussive Time-Scale Modification
+
+      - href: industry/indexp.qmd
+        text: Industry Experience
+
+      - text: Class Projects
+        menu: 
+          - href: classproj/zipline.qmd
+            text: Zipline Optimization Using MATLAB
+          - href: classproj/butterworth.qmd
+            text: Digital and Analog Buttersworth Filter Comparison
+          - href: classproj/invpend.qmd
+            text: Stabilizing an Inverted Pendulum
+          - href: classproj/digitalcontroller.qmd
+            text: Digital Control of an RC Circuit
+
 format:
   html:
     theme:

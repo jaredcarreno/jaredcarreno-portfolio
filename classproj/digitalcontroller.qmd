@@ -1,0 +1,3 @@
+---
+title: "Digital Control of an RC Circuit"
+---
