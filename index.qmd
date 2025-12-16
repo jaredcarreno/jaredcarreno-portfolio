@@ -1,0 +1,15 @@
+---
+title: "Engineering Portfolio"
+subtitle: "Jared Carreno"
+image: images/headshot.jpg
+about:
+    template: solana
+    links:
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/jared-carreno   
+        - icon: github
+          text: GitHub
+          href: https://github.com/jaredcarreno
+---
+Jared Carreño is a senior engineering major at [Harvey Mudd College](https://hmc.edu) with a focus on mechatronics and embedded design. With hands-on experience in renewable energy (Ohmium), consumer audio (Harman), and laboratory automation (Trilobio), combining mechanical analysis (FEA/CFD) with electrical implementation (PCB & Hardware Design/Firmware) to deliver robust, full-system engineering solutions.

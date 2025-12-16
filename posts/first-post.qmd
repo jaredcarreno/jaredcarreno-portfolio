@@ -1,0 +1,10 @@
+---
+title: "Hello Quarto"
+description: "Welcome to my Quarto portfolio"
+author: "Jared Carreno"
+date: "8/23/24"
+categories:
+  - reflection
+  - labreport
+draft: false
+---
