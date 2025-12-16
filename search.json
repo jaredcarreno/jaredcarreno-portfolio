@@ -126,13 +126,6 @@
     "text": "AI Prototype Summary\nI utilized AI to generate an alternative implementation for the multiplexing logic for comparison.\n  \n\n\n\nFigure 6. AI developed modules\n\n\nThe AI-generated code (Figure 6) was syntactically correct and logically sound, though it adopted a different architectural strategy. Instead of my counter-bit selection method, the AI proposed using the positive and negative edges of the clock to toggle between displays. While this is a valid approach for simple toggling, my counter-based implementation allows for easier tuning of the refresh frequency (by selecting different bits) without altering the master clock source."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Engineering Portfolio",
-    "section": "",
-    "text": "Jared Carreño is a senior engineering major at Harvey Mudd College with a focus on mechatronics and embedded design. With hands-on experience in renewable energy (Ohmium), consumer audio (Harman), and laboratory automation (Trilobio), combining mechanical analysis (FEA/CFD) with electrical implementation (PCB & Hardware Design/Firmware) to deliver robust, full-system engineering solutions."
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -145,6 +138,13 @@
     "title": "E155 Blog",
     "section": "",
     "text": "Hello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nAug 23, 2024\n\n\nJared Carreno\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Engineering Portfolio",
+    "section": "",
+    "text": "Jared Carreño is a senior engineering major at Harvey Mudd College with a focus on mechatronics and embedded design. With hands-on experience in renewable energy (Ohmium), consumer audio (Harman), and laboratory automation (Trilobio), combining mechanical analysis (FEA/CFD) with electrical implementation (PCB & Hardware Design/Firmware) to deliver robust, full-system engineering solutions."
   },
   {
     "objectID": "labs/lab1/lab1.html",
