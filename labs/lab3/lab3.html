@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.21">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Mechanical Debouncing Using an FPGA! – Engineering Portfolio</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea1d7ac60288e0f1efdbc993fd8432ae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Engineering Portfolio</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-embedded-systems-(fpgas--mcus" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Embedded Systems (FPGAs &amp; MCUs)</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-embedded-systems-(fpgas--mcus">    
+        <li>
+    <a class="dropdown-item" href="../../labs/lab1/lab1.html">
+ <span class="dropdown-text">Addition with a 7-Segment Display</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../labs/lab2/lab2.html">
+ <span class="dropdown-text">Addition with Two Time-Multiplexed 7-Segment Displays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../labs/lab3/lab3.html">
+ <span class="dropdown-text">Mechanical Debouncing Using an FPGA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../labs/lab4/lab4.html">
+ <span class="dropdown-text">Playing Music Using STM32 Timers</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../labs/lab5/lab5.html">
+ <span class="dropdown-text">High-Precision Motor Velocity Tracking Using Interrupts</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../labs/lab6/lab6.html">
+ <span class="dropdown-text">SPI-Based IoT Temperature Monitor</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation:</a>
+  <ul class="collapse">
+  <li><a href="#block-diagram-and-fsms" id="toc-block-diagram-and-fsms" class="nav-link" data-scroll-target="#block-diagram-and-fsms">Block Diagram and FSMs</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  <li><a href="#ai-prototype-summary" id="toc-ai-prototype-summary" class="nav-link" data-scroll-target="#ai-prototype-summary">AI Prototype Summary</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Mechanical Debouncing Using an FPGA!</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>This project focuses on the robust integration of a mechanical 4x4 keypad with an FPGA. A primary challenge in such interfaces is “switch bounce”—the rapid, erratic oscillation of mechanical contacts during actuation—which can trigger multiple false inputs for a single press.</p>
+<p>[Image of switch contact bounce oscilloscope trace]</p>
+<p>The objective was to implement a hardware-based debouncing filter and a matrix scanning algorithm to reliably capture inputs. Additionally, I designed a history-buffer display system on a dual 7-segment unit, which shifts values from right to left as new valid inputs are registered.</p>
+</section>
+<section id="design-and-testing-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>The system architecture divides the workload into two interacting Finite State Machines (FSMs): the <strong>Scan FSM</strong> and the <strong>Debounce FSM</strong>.</p>
+<p><strong>The Debounce FSM (Signal Integrity)</strong> As detailed in Figure 3, this FSM acts as a temporal filter. When <code>keyPressed</code> goes high, the system enters state <code>S1</code> and initiates a counter. The system validates the input only if the signal remains high for a full 50ms duration. If the signal fluctuates (bounces) or drops before this threshold, the FSM resets. Once validated (<code>S2</code>), a single <code>pulse</code> is generated for the logic layer. The FSM then locks in state <code>S3</code> until the key is physically released, preventing repeated registration of a held key.</p>
+<p><strong>The Scan FSM (Matrix Interface)</strong> To interface with the keypad’s grid layout, the Scan FSM (Figure 2) implements a column-driving algorithm. It cycles through one-hot encoded states (<code>colOn[3:0]</code>), driving one column high at a time while listening to the rows (<code>row[3:0]</code>).</p>
+<p>[Image of 4x4 keypad matrix internal circuit diagram]</p>
+<p>This scanning technique allows the FPGA to determine the exact coordinate of a button press <code>row_col = {row, colOn}</code> using only 8 GPIO pins for 16 buttons. The logic ensures that only one column is active at any given moment, minimizing bus contention.</p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation:</h2>
+<p>The Git repository containing the source code of this project can be found here: <a href="https://github.com/jaredcarreno/e155-lab3.git">Lab 3 Repo</a>.</p>
+<section id="block-diagram-and-fsms" class="level3">
+<h3 class="anchored" data-anchor-id="block-diagram-and-fsms">Block Diagram and FSMs</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab3_blockdiagram.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Figure 1. Block diagram visualizing the modules contained within the top module, lab3_jc</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab3_scanfsm.jpg" class="img-fluid figure-img" style="width:200.0%"></p>
+<figcaption>Figure 2. FSM for scan module</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab3_debounce_FSM.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Figure 3. FSM for debounce module</figcaption>
+</figure>
+</div>
+</section>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/lab3_schematic.jpg" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>Figure 4. Schematic of the hardware level implementation used to verify operation.</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<p>The implementation successfully met the core requirements: mechanical noise was effectively filtered, and the shift-register logic correctly displayed the history of inputs.</p>
+<p>During testing, I identified a hardware limitation known as “ghosting” or masking. When switching active columns while a key in the same row is still depressed, the system occasionally failed to register a distinct second press. This is a common artifact in matrix keypads without isolation diodes, where current can back-feed through pressed switches. While the current logic handles single-key inputs robustly, future revisions could address this edge case through more aggressive software filtering or diode-protected hardware.</p>
+<section id="conclusion" class="level3">
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<p>This project required an extensive debugging phase, totaling over 60 hours of development time. The majority of this effort was dedicated to logic analyzer tracing to ensure the timing between the scan cycles and the debounce counters was perfectly synchronized. The final result is a reliable input driver that can be reused in future embedded systems projects.</p>
+</section>
+</section>
+<section id="ai-prototype-summary" class="level2">
+<h2 class="anchored" data-anchor-id="ai-prototype-summary">AI Prototype Summary</h2>
+<p>I utilized an AI assistant to generate an initial skeleton for the SystemVerilog modules. The results were mixed and required significant refactoring. The AI hallucinated non-existent ports (specifically declaring <code>out</code> ports on modules where standard logic types were required) and introduced syntax errors that prevented synthesis. While it provided a rough structural starting point, it failed to produce a correct implementation of the matrix scanning logic, highlighting the necessity of manual design verification. The raw, erroneous AI-generated code is preserved below for reference:</p>
+<pre><code>module clock_divider(
+    input logic clk,        // 20 MHz input clock
+    input logic rst_n,      // Active low reset
+    output logic scan_clk   // Divided clock (100–200 Hz)
+);
+    // Target clock frequency: 100 Hz
+    // Divider for 20 MHz: 20 MHz / 100 Hz = 200,000
+    logic [18:0] counter;  // 19-bit counter for clock division
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            counter &lt;= 0;
+            scan_clk &lt;= 0;
+        end else begin
+            if (counter == 199_999) begin
+                counter &lt;= 0;
+                scan_clk &lt;= ~scan_clk;  // Toggle scan clock
+            end else begin
+                counter &lt;= counter + 1;
+            end
+        end
+    end
+endmodule
+
+module keypad_scanner1(
+    input logic clk,            // Clock input (scan clock)
+    input logic rst_n,          // Active low reset
+    input logic [3:0] rows,     // Row signals (active low)
+    output logic [3:0] cols,    // Column signals (active low)
+    output logic [3:0] key     // Output the detected key (hex value)
+);
+    // State machine for scanning rows and columns
+    typedef enum logic [1:0] {
+        IDLE = 2'b00,
+        SCAN = 2'b01,
+        DEBOUNCE = 2'b10
+    } state_t;
+
+    state_t state, next_state;
+    logic [3:0] column_reg, last_cols;
+    logic [3:0] key_reg, last_key;
+    logic key_pressed;
+
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state &lt;= IDLE;
+            cols &lt;= 4'b1111;  // All columns inactive
+            key_reg &lt;= 4'b0000;
+            last_cols &lt;= 4'b1111;
+        end else begin
+            state &lt;= next_state;
+        end
+    end
+
+    // State machine logic
+    always_ff @(state or column_reg or rows or last_cols) begin
+        case (state)
+            IDLE: begin
+                next_state = SCAN;
+                cols = 4'b1111;  // All columns inactive
+            end
+            SCAN: begin
+                // Cycle through columns, one active at a time
+                if (column_reg == 4'b1110) column_reg = 4'b1101;
+                else if (column_reg == 4'b1101) column_reg = 4'b1011;
+                else if (column_reg == 4'b1011) column_reg = 4'b0111;
+                else column_reg = 4'b1111;
+                cols = column_reg;  // Set current column
+                key_pressed = |(rows &amp; ~cols);  // Detect key press based on row signals
+                if (key_pressed) begin
+                    key_reg = rows; // Register key press based on row active
+                    next_state = DEBOUNCE;
+                end else begin
+                    next_state = SCAN;
+                end
+            end
+            DEBOUNCE: begin
+                // Debounce the key by ensuring release before registering new key
+                if (~|(rows &amp; ~cols)) begin  // No key pressed
+                    next_state = SCAN;
+                end else begin
+                    next_state = DEBOUNCE;
+                end
+            end
+            default: next_state = IDLE;
+        endcase
+    end
+
+    // Output the detected key
+    always_ff @(posedge clk) begin
+        if (key_pressed) key = key_reg;
+        else key = last_key;
+    end
+endmodule</code></pre>
+<pre><code>module keypad_one_shot_registration(
+    input logic clk,            // Clock input
+    input logic rst_n,          // Active low reset
+    input logic [3:0] rows,     // Row signals from keypad (active low)
+    output logic new_key,       // Single-cycle pulse for new key press
+    output logic [3:0] key_code // Detected key code (hex value)
+);
+    // State machine states
+    typedef enum logic [1:0] {
+        IDLE = 2'b00,
+        PRESSED = 2'b01,
+        RELEASED = 2'b10
+    } state_t;
+
+    state_t state, next_state;  // Current and next states
+    logic [3:0] last_key;       // Store the last detected key
+    logic [3:0] current_key;    // Store the current key being pressed
+
+    // Key detection: any active row means a key is pressed
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state &lt;= IDLE;
+            new_key &lt;= 0;
+            last_key &lt;= 4'b0000;
+            key_code &lt;= 4'b0000;
+        end else begin
+            state &lt;= next_state;
+        end
+    end
+
+    // Logic for key detection (rows are active low, check if any row is pressed)
+    always_ff @(posedge clk) begin
+        if (state == IDLE &amp;&amp; ~(|rows)) begin
+            // Detect the key code when a key is pressed (active low rows)
+            current_key &lt;= ~rows;
+        end
+    end
+
+    // State transition and new key pulse generation
+    always_ff @(posedge clk) begin
+        case (state)
+            IDLE: begin
+                if (~(|rows)) begin  // Detect key press (any active row)
+                    next_state &lt;= PRESSED;
+                    new_key &lt;= 1;  // Generate a one-shot pulse
+                end else begin
+                    next_state &lt;= IDLE;
+                    new_key &lt;= 0;  // No new key, reset pulse
+                end
+            end
+
+            PRESSED: begin
+                if (~(|rows)) begin  // Key is still pressed
+                    next_state &lt;= PRESSED;
+                    new_key &lt;= 0;  // No new key until key is released
+                end else begin
+                    next_state &lt;= RELEASED;  // Key released, move to RELEASED state
+                end
+            end
+
+            RELEASED: begin
+                if (~(|rows)) begin  // Key press has been released
+                    next_state &lt;= IDLE;
+                    key_code &lt;= current_key;  // Capture the key code
+                    last_key &lt;= current_key;
+                end else begin
+                    next_state &lt;= RELEASED;
+                end
+            end
+
+            default: begin
+                next_state &lt;= IDLE;
+            end
+        endcase
+    end
+endmodule</code></pre>
+<pre><code>module keypad_scanner2(
+    input logic clk,              // Clock input (divided clock)
+    input logic rst_n,            // Active low reset
+    input logic [3:0] rows,       // Row signals from keypad (active low)
+    output logic [3:0] key_code,  // Detected key code (4-bit hex value)
+    output logic key_pressed      // Boolean indicating key press status
+);
+
+    // Define FSM states
+    typedef enum logic [1:0] {
+        SCAN_IDLE = 2'b00,         // Wait for key press
+        SCAN_COL_0 = 2'b01,        // Scan column 0
+        SCAN_COL_1 = 2'b10,        // Scan column 1
+        SCAN_COL_2 = 2'b11         // Scan column 2
+    } state_t;
+
+    state_t state, next_state;    // Current and next states
+    logic [3:0] col_mask;         // Column select mask
+    logic [3:0] detected_key;     // Detected key code (4 bits)
+
+    // State machine for scanning columns
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state &lt;= SCAN_IDLE;
+            col_mask &lt;= 4'b1111;  // All columns inactive initially
+        end else begin
+            state &lt;= next_state;
+        end
+    end
+
+    // Column scanning logic: one column is active (low) at a time
+    always_ff @(posedge clk) begin
+        case (state)
+            SCAN_IDLE: begin
+                col_mask &lt;= 4'b1111;  // No column active
+            end
+            SCAN_COL_0: begin
+                col_mask &lt;= 4'b1110;  // Only column 0 is active (low)
+            end
+            SCAN_COL_1: begin
+                col_mask &lt;= 4'b1101;  // Only column 1 is active (low)
+            end
+            SCAN_COL_2: begin
+                col_mask &lt;= 4'b1011;  // Only column 2 is active (low)
+            end
+            default: begin
+                col_mask &lt;= 4'b1111;  // Default: no column active
+            end
+        endcase
+    end
+
+    // Detect the key code based on the active column and row signals
+    always_ff @(posedge clk) begin
+        case (state)
+            SCAN_COL_0: begin
+                if (~rows[0]) detected_key &lt;= 4'b0001;  // Row 0, Column 0
+                else if (~rows[1]) detected_key &lt;= 4'b0100;  // Row 1, Column 0
+                else if (~rows[2]) detected_key &lt;= 4'b0111;  // Row 2, Column 0
+                else if (~rows[3]) detected_key &lt;= 4'b1000;  // Row 3, Column 0
+            end
+            SCAN_COL_1: begin
+                if (~rows[0]) detected_key &lt;= 4'b0010;  // Row 0, Column 1
+                else if (~rows[1]) detected_key &lt;= 4'b0101;  // Row 1, Column 1
+                else if (~rows[2]) detected_key &lt;= 4'b0110;  // Row 2, Column 1
+                else if (~rows[3]) detected_key &lt;= 4'b1001;  // Row 3, Column 1
+            end
+            SCAN_COL_2: begin
+                if (~rows[0]) detected_key &lt;= 4'b0011;  // Row 0, Column 2
+                else if (~rows[1]) detected_key &lt;= 4'b0110;  // Row 1, Column 2
+                else if (~rows[2]) detected_key &lt;= 4'b0111;  // Row 2, Column 2
+                else if (~rows[3]) detected_key &lt;= 4'b1011;  // Row 3, Column 2
+            end
+            default: detected_key &lt;= 4'b0000; // Default: no key detected
+        endcase
+    end
+
+    // Key press indicator: Any key pressed when one of the rows is active
+    always_ff @(posedge clk) begin
+        if (~(|rows))  // If any row is active, a key is pressed
+            key_pressed &lt;= 1'b1;
+        else
+            key_pressed &lt;= 1'b0;
+    end
+
+    // Output the detected key code
+    always_ff @(posedge clk) begin
+        key_code &lt;= detected_key;
+    end
+
+    // State machine transitions: cycle through the columns
+    always_ff @(posedge clk) begin
+        case (state)
+            SCAN_IDLE: next_state &lt;= SCAN_COL_0;
+            SCAN_COL_0: next_state &lt;= SCAN_COL_1;
+            SCAN_COL_1: next_state &lt;= SCAN_COL_2;
+            SCAN_COL_2: next_state &lt;= SCAN_IDLE;
+            default: next_state &lt;= SCAN_IDLE;
+        endcase
+    end
+endmodule</code></pre>
+<pre><code>module top_level (
+    input logic clk,               // Clock from internal oscillator
+    input logic rst_n,             // Active low reset
+    input logic [3:0] rows,        // Row signals from keypad (active low)
+    output logic [6:0] seg_a,      // Seven segment display segments for first digit
+    output logic [6:0] seg_b,      // Seven segment display segments for second digit
+    output logic an0,              // Enable signal for first digit
+    output logic an1               // Enable signal for second digit
+);
+
+    // Signals for keypad scanner and one-shot registration
+    logic [3:0] key_code;         // Detected key code
+    logic new_key;                // New key detected (one-shot signal)
+    logic key_pressed;            // Key pressed indicator
+
+    // Signals for last two keys
+    logic [3:0] most_recent_key;  // Most recent key (new key)
+    logic [3:0] older_key;        // Older key (last key)
+
+    // Signals for 7-segment display
+    logic [3:0] display_digit;    // Digit to be displayed on the multiplexed display
+    logic mux_select;             // Multiplexer to select which digit to display
+
+    // Instantiate the keypad scanner
+    keypad_scanner2 scanner (
+        .clk(clk),
+        .rst_n(rst_n),
+        .rows(rows),
+        .key_code(key_code),
+        .key_pressed(key_pressed)
+    );
+
+    // Instantiate the keypad one-shot registration module
+    keypad_one_shot_registration one_shot (
+        .clk(clk),
+        .rst_n(rst_n),
+        .rows(rows),
+        .new_key(new_key),
+        .key_code(key_code)
+    );
+
+    // Process for shifting the last two keys (older &lt;- most recent; most recent &lt;- new)
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            most_recent_key &lt;= 4'b0000;
+            older_key &lt;= 4'b0000;
+        end else if (new_key) begin
+            // Shift the keys when a new key is detected
+            older_key &lt;= most_recent_key;
+            most_recent_key &lt;= key_code;
+        end
+    end
+
+    // Clock divider logic to generate a slower clock for display multiplexing
+    logic clk_display;
+    reg [15:0] clk_divider;  // Divider for the clock (adjust for desired multiplexing rate)
+    always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            clk_divider &lt;= 16'b0;
+            clk_display &lt;= 0;
+        end else begin
+            // Divide the clock to get a slower rate (e.g., 60 Hz for multiplexing)
+            if (clk_divider == 16'd49999) begin  // Adjust this value for desired rate
+                clk_divider &lt;= 16'b0;
+                clk_display &lt;= ~clk_display;  // Toggle the display clock
+            end else begin
+                clk_divider &lt;= clk_divider + 1'b1;
+            end
+        end
+    end
+
+    // Multiplexed display logic: alternate between displaying the two digits
+    always_ff @(posedge clk_display or negedge rst_n) begin
+        if (!rst_n) begin
+            mux_select &lt;= 0;
+            display_digit &lt;= 4'b0000;
+            an0 &lt;= 1;
+            an1 &lt;= 0;
+        end else begin
+            if (mux_select) begin
+                display_digit &lt;= most_recent_key;
+                an0 &lt;= 0;
+                an1 &lt;= 1;  // Enable second digit
+            end else begin
+                display_digit &lt;= older_key;
+                an0 &lt;= 1;  // Enable first digit
+                an1 &lt;= 0;
+            end
+            mux_select &lt;= ~mux_select;  // Toggle between the two digits
+        end
+    end
+
+    // Instantiate the seven-segment display decoder for both digits
+    seven_segment seg1(
+        .in(display_digit),
+        .out(seg_a)
+    );
+
+    seven_segment seg2(
+        .in(display_digit),
+        .out(seg_b)
+    );
+endmodule</code></pre>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/jaredcarreno\.github\.io\/jaredcarreno-portfolio\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
