@@ -137,7 +137,7 @@
     "href": "dsp/realtimetsm/realtimetsm.html",
     "title": "Real-Time Harmonic-Percussive Time-Scale Modification",
     "section": "",
-    "text": "Download PDF file."
+    "text": "This was a final project for my Digital Signal Processing class. We improved upon the TSM (Time Stretch Modification) algorithm. Our implementation takes advantage of HPSS (harmonic percussive source separation), which utilizes binary bit-masks to isolate the harmonic and percussive components of any given recording. Then we pipelined the entire process to allow for a dynamic time-stretch factor, alpha, that could be adjusted in real-time. Check our report below!\nDownload PDF file."
   },
   {
     "objectID": "about.html",
