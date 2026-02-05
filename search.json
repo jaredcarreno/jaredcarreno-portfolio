@@ -126,6 +126,13 @@
     "text": "AI Prototype Summary\nI utilized AI to generate an alternative implementation for the multiplexing logic for comparison.\n  \n\n\n\nFigure 6. AI developed modules\n\n\nThe AI-generated code (Figure 6) was syntactically correct and logically sound, though it adopted a different architectural strategy. Instead of my counter-bit selection method, the AI proposed using the positive and negative edges of the clock to toggle between displays. While this is a valid approach for simple toggling, my counter-based implementation allows for easier tuning of the refresh frequency (by selecting different bits) without altering the master clock source."
   },
   {
+    "objectID": "industry/indexp.html",
+    "href": "industry/indexp.html",
+    "title": "Industry Experience",
+    "section": "",
+    "text": "I spent the summer leading up to my senior year with HARMAN in their Northridge office."
+  },
+  {
     "objectID": "dsp/realtimetsm/realtimetsm.html",
     "href": "dsp/realtimetsm/realtimetsm.html",
     "title": "Real-Time Harmonic-Percussive Time-Scale Modification",
