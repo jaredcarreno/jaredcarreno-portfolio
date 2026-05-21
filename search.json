@@ -137,7 +137,21 @@
     "href": "dsp/realtimetsm/realtimetsm.html",
     "title": "Real-Time Harmonic-Percussive Time-Scale Modification",
     "section": "",
-    "text": "This was a final project for my Digital Signal Processing class. We improved upon the TSM (Time Stretch Modification) algorithm. Our implementation takes advantage of HPSS (harmonic percussive source separation), which utilizes binary bit-masks to isolate the harmonic and percussive components of any given recording. Then we pipelined the entire process to allow for a dynamic time-stretch factor, alpha, that could be adjusted in real-time. Check our report below!\nDownload PDF file."
+    "text": "My partner, Sayema Lubis, and I improved upon existing TSM (Time Stretch Modification) algorithms. Our implementation takes advantage of HPSS (harmonic percussive source separation), which utilizes binary bit-masks to isolate the harmonic and percussive components of any given recording. Then we pipelined the entire process to allow for a dynamic time-stretch factor, alpha, that could be adjusted in real-time. Check our report below!\nDownload PDF file."
+  },
+  {
+    "objectID": "classproj/invpend.html",
+    "href": "classproj/invpend.html",
+    "title": "Stabilizing an Inverted Pendulum in MATLAB",
+    "section": "",
+    "text": "Download PDF file."
+  },
+  {
+    "objectID": "classproj/butterworth.html",
+    "href": "classproj/butterworth.html",
+    "title": "Comparison of Digital and Analog High-Order Buttersworth Filters Using MATLAB",
+    "section": "",
+    "text": "Download PDF file."
   },
   {
     "objectID": "about.html",
@@ -152,6 +166,13 @@
     "title": "E155 Blog",
     "section": "",
     "text": "Hello Quarto\n\n\nWelcome to my Quarto portfolio\n\n\n\n\n\nAug 23, 2024\n\n\nJared Carreno\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "classproj/digitalcontroller.html",
+    "href": "classproj/digitalcontroller.html",
+    "title": "Digital Control of an RC Circuit",
+    "section": "",
+    "text": "Download PDF file."
   },
   {
     "objectID": "index.html",
